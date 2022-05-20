@@ -3,7 +3,9 @@ const IS_FULL_TIME = 2;
 const PART_TIME_HOURS = 4;
 const FULL_TIME_HOURS = 8;
 const WAGE_PER_HOUR = 20;
-const NO_OF_WORKING_DAYS = 2;
+const NO_OF_WORKING_DAYS = 20;
+const NO_OF_WORKING_HOURS = 160;
+
 
 function getWorkingHour(empCheck){
     switch(empCheck){
@@ -17,9 +19,14 @@ function getWorkingHour(empCheck){
 }
 
 let empHour = 0;
-for(let day = 0; day < NO_OF_WORKING_DAYS; day++){
+let total_woring_hour = 0;
+let total_woring_days = 0;
+
+while (total_woring_days <= NO_OF_WORKING_DAYS && total_woring_hour <= NO_OF_WORKING_HOURS ){
     let empCheck = Math.floor(Math.random() * 10) % 3;
-    empHour = getWorkingHour(empCheck);
+    empHour += getWorkingHour(empCheck);
+    total_woring_days++;
+    total_woring_hour = empHour;
 }
 
 let empWage = empHour * WAGE_PER_HOUR;
